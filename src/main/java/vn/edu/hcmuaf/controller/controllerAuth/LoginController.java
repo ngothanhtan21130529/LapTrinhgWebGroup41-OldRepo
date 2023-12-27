@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
         String pass=request.getParameter("pass");
         //tạo UserDAO
         UserDAO userDAO=UserDAO.getInstance();
-        List<User> list=userDAO.selectInformation();
+        List<User> list= (List<User>) userDAO.selectInformation(username,pass);
         //duyệt qua từng phần tử
         for(User user:list){
             if(user.getName().equals(username)&&user.getPassword().equals(pass)&&user.getRole().getRoleName().equals("Admin")){
